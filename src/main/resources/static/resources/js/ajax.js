@@ -83,73 +83,11 @@ $(document).ready(function () {
         });
     });
 
-    //quick view
-    $('.quickview').on('click', function () {
-        var value = this.id;
-        console.log(value);
-        $.ajax({
-            method: 'GET',
-            url: 'quickview',
-            dataType: 'json',
-            cache: false,
-            data: {
-                id: value,
-            }
-        }).done(function (book) {
-            console.log(book);
-            var imageUrl='';
-            imageUrl += '<img alt="big images" src="..'+book.image+'">'
-            $('#quickBookName').text(book.name);
-            $('#quickBookImage').html(imageUrl);
-            $('.new-price').text(book.price);
-            $('#productmodal').modal('show');
-        });
-    });
+
     
-    //auto complete search
-    $('#search').keyup(function() {
-        var name = $('#search').val();
-    		$.ajax({
-                method : 'GET',
-                url : 'autoComplete',
-                dataType : 'json',
-                cache: false,
-    		    data :{ 
-    		    	name : name,
-    		    }
-    		}).done(function (book) {
-    			console.log(book)
-                var s ="";
-    			if(name.length == 0){
-                	s='';
-                }else{
-                s += '<div class="alert alert-info">';
-                for(var i = 0; i < book.length; i++){
-                	s +='<a href="singleProduct/'+book[i].id+'" class="alert-link">'+ book[i].name+'</a></br>'
-                }
-                	s += '</div>';
-                }
-                $("#autoCompleteSearch").html(s);
-           });    
-    });
+
     
-    //update cart items quantity
-    $('.quantity').blur(function() {
-        var newQuantity = $('.quantity').val();
-        var id = this.id;
-    		$.ajax({
-                method : 'GET',
-                url : 'updateCart',
-                dataType : 'json',
-                cache: false,
-    		    data :{ 
-                    id : id,
-                    newQuantity : newQuantity ,
-    		    }
-    		}).done(function (book) {
-    			$('.cart-total').text(book.total);
-           });    
-    });
+
     
 });
 
