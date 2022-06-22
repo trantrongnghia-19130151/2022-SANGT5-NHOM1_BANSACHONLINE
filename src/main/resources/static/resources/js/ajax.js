@@ -77,6 +77,66 @@ $(document).ready(function () {
            });    
     });
     
+	//auto complete search
+	$('#search').keyup(function() {
+		let name = $('#search').val();
+		let len = name.length;
+		
+		$.ajax({
+			method: 'GET',
+			url: 'autoComplete',
+			dataType: 'json',
+			cache: 'no-cache',
+			data: {
+				name: name,
+			}
+		}).done(function(book) {
+			console.log(book)
+			var s = "";
+
+			$('#result').on('click', function() {
+				console.log(name.length)
+				if (len == 0) {
+					s += '';
+					
+				} else {
+					s += '<div class="alert alert-info" >';
+					for (var i = 0; i < book.length; i++) {
+						s += '<a href="singleProduct/' + book[i].id + ' # " class="alert-link">' + book[i].name + '</a></br>'
+					}
+					s += '</div>';
+				}
+				$("#completeSearch").html(s);
+			});
+
+
+		});
+    //filter by price
+    $('#filter').on('click', function () {
+        var value = $('#amount').val().trim();
+        var res = value.split("-");
+        var res1 = res[0].split("$");
+        var res2 = res[1].split("$");
+        var price1 = res1[1].trim();
+        var price2 = res2[1].trim();
+        console.log("Price 1 : "+price1+" Price 2 : "+price2)
+        $.ajax({
+            method: 'GET',
+            url: 'filterPrice',
+            dataType: 'json',
+            cache: false,
+            data: {
+                price1: price1,
+                price2: price2
+            }
+        }).done(function (book) {
+        	$( ".wn__pagination" ).hide();
+            displayBook(book);
+        });
+    });
+
+
+  
 });
 
 

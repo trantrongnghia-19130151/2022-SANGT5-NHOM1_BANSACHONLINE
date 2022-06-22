@@ -2,9 +2,7 @@ package com.bansach.controller;
 
 import java.util.List;
 import java.util.Optional;
-
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.ui.Model;
@@ -17,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.bansach.entities.*;
 import com.bansach.service.BookStoreService;
 
+
 @CrossOrigin("*")
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
@@ -24,8 +23,6 @@ public class RestController {
 	@Autowired
 	private BookStoreService bookService; 
 		
-
-	
 	@GetMapping("/listBook")
 	public List<Book> homeService(){
 		return bookService.listBook();
@@ -41,6 +38,7 @@ public class RestController {
 		return bookService.pagination(pageNumber);
 	}
 	
+
 	@GetMapping(value= {"/addCart/updateCart","/removeCart/updateCart","/updateCart","/cart/updateCart"})
 	public ShoppingCart updateCart(HttpSession session,int id, int newQuantity) {
 		System.out.println("Id "+id+" newQuantity "+newQuantity);
@@ -49,4 +47,19 @@ public class RestController {
 		return cart;
 	}
 	
+
+	@GetMapping("/filterPrice")
+	public List<Book> filterPrice(double price1, double price2){
+		return bookService.filterPrice(price1, price2);
+	}
+	
+
+	@GetMapping("/autoComplete")
+	public List<Book> autoComplete( String name){
+		System.out.println("Name : "+name);
+		return bookService.autoComplete(name);
+	}
+	
+ 
+
 }

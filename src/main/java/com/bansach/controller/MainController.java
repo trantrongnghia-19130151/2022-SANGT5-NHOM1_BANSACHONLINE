@@ -25,11 +25,13 @@ import com.bansach.entities.ShoppingCartItem;
 import com.bansach.service.BookStoreService;
 import com.bansach.service.OrderDetailService;
 
+
 @Controller
 public class MainController {
 
 	@Autowired
 	private BookStoreService bookService;
+
 
 	@Autowired
 	private OrderDetailService orderDetailService;
@@ -42,7 +44,6 @@ public class MainController {
 		model.addAttribute("listBook", bookService.pagination(0));
 		return "index";
 	}
-
 	@RequestMapping(value = "/shop-grid")
 	public String shop(Model model) {
 		model.addAttribute("listBook", bookService.pagination(0));
@@ -52,6 +53,12 @@ public class MainController {
 	@GetMapping(value = "/cart")
 	public String cart() {
 		return "cart";
+	}
+
+	@GetMapping("/singleProduct/{id}")
+	public String getSingleProduct(@PathVariable("id") int id, Model model) {
+		model.addAttribute("book", bookService.findBookById(id));
+		return "singleProduct";
 	}
 
 	/*
@@ -104,6 +111,7 @@ public class MainController {
 		return "cart";
 	}
 
+
 	@GetMapping("/checkout")
 	public String checkout2(HttpSession session, Model model) {
 		ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
@@ -116,4 +124,16 @@ public class MainController {
 		model.addAttribute("books", cart.getItems());
 		return "checkout";
 	}
+
+	@GetMapping("/user")
+	public String user() {
+		return "user";
+	}
+
+	@GetMapping("/403")
+	public String notfoundpage() {
+		return "403";
+	}
+
+
 }

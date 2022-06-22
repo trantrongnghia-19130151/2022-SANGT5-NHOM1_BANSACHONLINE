@@ -19,9 +19,9 @@ public class ProductService {
 	@Autowired
 	private BookRepository bookRepository;
 
-//	public List<Book> findByPrice(double price1, double price2) {
-//		return bookRepository.findByPrice(price1, price2);
-//	}
+	public List<Book> findByPrice(double price1, double price2) {
+		return bookRepository.findByPrice(price1, price2);
+	}
 
 	public Book save(Book entity) {
 		return bookRepository.save(entity);

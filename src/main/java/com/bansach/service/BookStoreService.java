@@ -31,4 +31,10 @@ public class BookStoreService {
 		PageRequest pageable = PageRequest.of(pageNumber, 12);
 		return bookRepository.findAll(pageable);
 	}
+	public List<Book> filterPrice(double price1, double price2){
+		return bookRepository.findByPrice(price1, price2);
+	}
+	public List<Book> autoComplete(String name){
+		return bookRepository.autoComplete(name);
+	}
 }
