@@ -1,4 +1,5 @@
 
+
 var book; 
 function displayBook(book) {
     var s = '';
@@ -59,6 +60,40 @@ $(document).ready(function () {
         });
     });
     
+	//auto complete search
+	$('#search').keyup(function() {
+		let name = $('#search').val();
+		let len = name.length;
+		
+		$.ajax({
+			method: 'GET',
+			url: 'autoComplete',
+			dataType: 'json',
+			cache: 'no-cache',
+			data: {
+				name: name,
+			}
+		}).done(function(book) {
+			console.log(book)
+			var s = "";
+
+			$('#result').on('click', function() {
+				console.log(name.length)
+				if (len == 0) {
+					s += '';
+					
+				} else {
+					s += '<div class="alert alert-info" >';
+					for (var i = 0; i < book.length; i++) {
+						s += '<a href="singleProduct/' + book[i].id + ' # " class="alert-link">' + book[i].name + '</a></br>'
+					}
+					s += '</div>';
+				}
+				$("#completeSearch").html(s);
+			});
+
+
+		});
     //filter by price
     $('#filter').on('click', function () {
         var value = $('#amount').val().trim();
@@ -84,11 +119,7 @@ $(document).ready(function () {
     });
 
 
-    
-
-    
-
-    
+  
 });
 
 

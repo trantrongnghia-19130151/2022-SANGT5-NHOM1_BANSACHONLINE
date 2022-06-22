@@ -27,11 +27,8 @@ import com.bansach.entities.ShoppingCart;
 import com.bansach.entities.ShoppingCartItem;
 import com.bansach.service.BookStoreService;
 
-
 @Controller
 public class MainController {
-
-
 
 	@Autowired
 	private BookStoreService bookService;
@@ -46,7 +43,6 @@ public class MainController {
 		model.addAttribute("listBook", bookService.pagination(0));
 		return "index";
 	}
-
 	@RequestMapping(value = "/shop-grid")
 	public String shop(Model model) {
 		model.addAttribute("listBook", bookService.pagination(0));
@@ -70,15 +66,11 @@ public class MainController {
 		model.addAttribute("customer", new Customer());
 		return "addCustomer";
 	}
-
-
-
 	@GetMapping("/singleProduct/{id}")
 	public String getSingleProduct(@PathVariable("id") int id, Model model) {
 		model.addAttribute("book", bookService.findBookById(id));
 		return "singleProduct";
 	}
-
 	/*
 	 * Shopping cart
 	 */
@@ -160,4 +152,5 @@ public class MainController {
 		model.addAttribute("customer", new Customer());
 		return "myaccount";
 	}
+
 }

@@ -1,6 +1,7 @@
 package com.bansach.controller;
 
 import java.util.List;
+
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.bansach.entities.*;
 import com.bansach.service.BookStoreService;
+
 
 
 @CrossOrigin("*")
@@ -44,18 +46,12 @@ public class RestController {
 		return bookService.filterPrice(price1, price2);
 	}
 	
+
 	@GetMapping("/autoComplete")
 	public List<Book> autoComplete( String name){
 		System.out.println("Name : "+name);
 		return bookService.autoComplete(name);
 	}
 	
-	@GetMapping("/quickview")
-	public Book quickView(int id) {
-		System.out.println("Book Id : "+id);
-		return bookService.findBookById(id);
-	}
-	
-	
-	
+ 
 }
