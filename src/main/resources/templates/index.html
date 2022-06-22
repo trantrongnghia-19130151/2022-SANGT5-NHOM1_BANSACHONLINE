@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Trang chủ</title>
 </head>
-<body>
+<body >
 <div th:insert="~{link :: links}"></div>
 <div th:insert="~{header :: header}"></div>
 <section class="wn__product__area brown--color pt--80  pb--30">
@@ -37,7 +37,7 @@
 									<div class="actions_inner">
 										<ul class="add_to_links">
 											<li><a class="addCart" th:href="@{'/addCart/'+${book.id}}"><i class="bi bi-shopping-bag4"></i></a></li>
-											<li><a class="wishlist" href="403.html"><i class="bi bi-shopping-cart-full"></i></a></li>
+											<li><a class="wishlist" href="wishlist.html"><i class="bi bi-shopping-cart-full"></i></a></li>
 											<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
 											<li><a data-toggle="modal" title="Quick View" class="quickview" th:id="${book.id}" href="#productmodal"><i class="bi bi-search"></i></a></li>
 										</ul>
