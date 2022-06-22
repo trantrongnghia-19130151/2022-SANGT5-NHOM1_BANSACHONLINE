@@ -3,33 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <title>Header</title>
-<!--  ><style>
-.book {
-	background-color: red;
-}
-</style>-->
-</head>
 
+</head>
+<style>
+.alert-link{
+	background-color: green;
+}
+</style>
 <body th:fragment="header">
-	<div th:insert="~{link :: links}"></div>
-	<div class="wrapper" id="wrapper">
+<div th:insert="~{link :: links}"></div>
+<div class="wrapper" id="wrapper">
 		<!-- Header -->
-		<header id="wn__header"
-			class="header__area header__absolute sticky__header">
+		<header id="wn__header" class="header__area header__absolute sticky__header">
+
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-6 col-sm-6 col-6 col-lg-2">
 						<div class="logo">
-							<a th:href="@{/index}"> <img alt="logo images"
-								th:src="@{/resources/images/logo/logo.png}" />
+							<a th:href="@{/index}">
+							<img alt="logo images"  th:src="@{/resources/images/logo/logo.png}" />
+
 							</a>
 						</div>
 					</div>
 					<div class="col-lg-8 d-none d-lg-block">
 						<nav class="mainmenu__nav">
 							<ul class="meninmenu d-flex justify-content-start">
-								<li class="drop with--one--item"><a th:href="@{/index}"
-									th:text="#{lb.home}"></a></li>
+
+								<li class="drop with--one--item"><a th:href="@{/index}" th:text="#{lb.home}"></a></li>
+
 								<li class="drop"><a href="#" th:text="#{lb.shop}"></a>
 									<div class="megamenu mega03">
 										<ul class="item item03">
@@ -38,8 +40,8 @@
 											<li><a th:href="@{/single-product}">Single Product</a></li>
 										</ul>
 										<ul class="item item03">
-											<li class="title"><a th:href="@{/shop-grid}">Shop
-													Page</a></li>
+										<li class="title"><a th:href="@{/shop-grid}">Shop Page</a></li>
+
 											<li><a href="myaccount">My Account</a></li>
 											<li><a href="cart.html">Cart Page</a></li>
 											<li><a href="checkout">Checkout Page</a></li>
@@ -55,26 +57,26 @@
 											<li><a th:href="@{/shop-grid}">Books Under $5</a></li>
 											<li><a th:href="@{/shop-grid}">Bargain Books</a></li>
 										</ul>
-									</div></li>
-								<li class="drop"><a th:href="@{/shop-grid}"
-									th:text="#{lb.books}"></a>
+
+									</div>
+								</li>
+								<li class="drop"><a th:href="@{/shop-grid}" th:text="#{lb.books}"></a>
 									<div class="megamenu mega03">
 										<ul class="item item03">
 											<li class="title">Categories</li>
-											<li><a th:href="@{/shop-grid}" th:text="#{lb.biography}">
-											</a></li>
-											<li><a th:href="@{/shop-grid}" th:text="#{lb.business}">
-											</a></li>
-											<li><a th:href="@{/shop-grid}" th:text="#{lb.cookbook}">
-											</a></li>
+											<li><a th:href="@{/shop-grid}" th:text="#{lb.biography}"> </a></li>
+											<li><a th:href="@{/shop-grid}" th:text="#{lb.business}"> </a></li>
+											<li><a th:href="@{/shop-grid}" th:text="#{lb.cookbook}"> </a></li>
+
 											<li><a th:href="@{/shop-grid}" th:text="#{lb.health}"></a></li>
 											<li><a th:href="@{/shop-grid}" th:text="#{lb.history}"></a></li>
 										</ul>
 										<ul class="item item03">
 											<li class="title">Customer Favourite</li>
 											<li><a th:href="@{/shop-grid}" th:text="#{lb.mystery}"></a></li>
-											<li><a th:href="@{/shop-grid}"
-												th:text="#{lb.inspiration}"></a></li>
+
+											<li><a th:href="@{/shop-grid}" th:text="#{lb.inspiration}"></a></li>
+
 											<li><a th:href="@{/shop-grid}" th:text="#{lb.romance}"></a></li>
 											<li><a th:href="@{/shop-grid}" th:text="#{lb.fiction}"></a></li>
 											<li><a th:href="@{/shop-grid}" th:text="#{lb.self}">Sleeveless</a></li>
@@ -87,9 +89,11 @@
 											<li><a th:href="@{/shop-grid}">Home & Garden</a></li>
 											<li><a th:href="@{/shop-grid}">Humor Books</a></li>
 										</ul>
-									</div></li>
-								<li class="drop"><a th:href="@{/shop-grid}"
-									th:text="#{lb.kids}"></a>
+
+									</div>
+								</li>
+								<li class="drop"><a th:href="@{/shop-grid}" th:text="#{lb.kids}"></a>
+
 									<div class="megamenu mega02">
 										<ul class="item item02">
 											<li class="title">Top Collections</li>
@@ -107,7 +111,10 @@
 											<li><a th:href="@{/shop-grid}">Toys & Games</a></li>
 											<li><a th:href="@{/shop-grid}">Hoodies</a></li>
 										</ul>
-									</div></li>
+
+									</div>
+								</li>
+
 								<li class="drop"><a href="#" th:text="#{lb.pages}"></a>
 									<div class="megamenu dropdown">
 										<ul class="item item01">
@@ -115,9 +122,11 @@
 											<li class="label2"><a href="portfolio.html">Portfolio</a>
 												<ul>
 													<li><a href="portfolio.html">Portfolio</a></li>
-													<li><a href="portfolio-details.html">Portfolio
-															Details</a></li>
-												</ul></li>
+
+													<li><a href="portfolio-details.html">Portfolio Details</a></li>
+												</ul>
+											</li>
+
 											<li><a href="myaccount">My Account</a></li>
 											<li><a href="cart">Cart Page</a></li>
 											<li><a href="checkout.html">Checkout Page</a></li>
@@ -126,34 +135,43 @@
 											<li><a href="faq.html">Faq Page</a></li>
 											<li><a href="team.html">Team Page</a></li>
 										</ul>
-									</div></li>
+
+									</div>
+								</li>
+
 								<li class="drop"><a href="blog.html">Blog</a>
 									<div class="megamenu dropdown">
 										<ul class="item item01">
 											<li><a href="blog.html">Blog Page</a></li>
 											<li><a href="blog-details.html">Blog Details</a></li>
 										</ul>
-									</div></li>
+
+									</div>
+								</li>
+
 								<li><a th:href="@{/contact}" th:text="#{lb.contact}"></a></li>
 							</ul>
 						</nav>
 					</div>
 					<div class="col-md-6 col-sm-6 col-6 col-lg-2">
-						<ul
-							class="header__sidebar__right d-flex justify-content-end align-items-center">
-							<li id="countSearch" class="shop_search"><a
-								th:href="@{/search}" class="search__active"></a></li>
+
+						<ul class="header__sidebar__right d-flex justify-content-end align-items-center">
+							<li class="shop_search"><a class="search__active" href="#"></a></li>
 							<li class="wishlist"><a href="#"></a></li>
-							<li class="shopcart"><a class="cartbox_active"
-								href="cart.html"><span class="product_qun">3</span></a> <!-- Start Shopping Cart -->
-								<div class="block-minicart minicart_active"></div> <!-- End Shopping Cart -->
+							<li class="shopcart"><a class="cartbox_active" href="#"><span class="product_qun">3</span></a>
+								<!-- Start Shopping Cart -->
+								<div class="block-minicart minicart_active">
+								
+								</div>
+								<!-- End Shopping Cart -->
 							</li>
-							<li class="setting__bar__icon"><a class="setting__active"
-								href="#"></a>
+							<li class="setting__bar__icon"><a class="setting__active" href="#"></a>
 								<div class="searchbar__content setting__block">
 									<div class="content-inner">
 										<div class="switcher-currency">
-											<strong class="label switcher-label"> <span>Currency</span>
+											<strong class="label switcher-label">
+												<span>Currency</span>
+
 											</strong>
 											<div class="switcher-options">
 												<div class="switcher-currency-trigger">
@@ -179,8 +197,10 @@
 											</div>
 										</div>
 										<div class="switcher-currency">
-											<strong class="label switcher-label"> <span>Select
-													Store</span>
+
+											<strong class="label switcher-label">
+												<span>Select Store</span>
+
 											</strong>
 											<div class="switcher-options">
 												<div class="switcher-currency-trigger">
@@ -195,22 +215,29 @@
 											</div>
 										</div>
 										<div class="switcher-currency">
-											<strong class="label switcher-label"> <span>My
-													Account</span>
+
+											<strong class="label switcher-label">
+												<span>My Account</span>
+
 											</strong>
 											<div class="switcher-options">
 												<div class="switcher-currency-trigger">
 													<div class="setting__menu">
-														<span><a th:href="@{/logout}">Sign out</a></span> <span><a
-															href="#">My Account</a></span> <span><a href="#">My
-																Wishlist</a></span> <span><a href="#">Sign In</a></span> <span><a
-															href="#">Create An Account</a></span>
+
+														<span><a th:href="@{/logout}">Sign out</a></span>
+														<span><a href="#">My Account</a></span>
+														<span><a href="#">My Wishlist</a></span>
+														<span><a href="#">Sign In</a></span>
+														<span><a href="#">Create An Account</a></span>
+
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
+
 								</div></li>
+
 						</ul>
 					</div>
 				</div>
@@ -226,9 +253,11 @@
 										<li><a href="portfolio.html">Portfolio</a>
 											<ul>
 												<li><a href="portfolio.html">Portfolio</a></li>
-												<li><a href="portfolio-details.html">Portfolio
-														Details</a></li>
-											</ul></li>
+
+												<li><a href="portfolio-details.html">Portfolio Details</a></li>
+											</ul>
+										</li>
+
 										<li><a href="my-account.html">My Account</a></li>
 										<li><a href="cart">Cart Page</a></li>
 										<li><a href="checkout.html">Checkout Page</a></li>
@@ -236,23 +265,33 @@
 										<li><a href="error404.html">404 Page</a></li>
 										<li><a href="faq.html">Faq Page</a></li>
 										<li><a href="team.html">Team Page</a></li>
-									</ul></li>
+
+									</ul>
+								</li>
+
 								<li><a th:href="@{/shop-grid}">Shop</a>
 									<ul>
 										<li><a th:href="@{/shop-grid}">Shop Grid</a></li>
 										<li><a href="single-product.html">Single Product</a></li>
-									</ul></li>
+
+									</ul>
+								</li>
+
 								<li><a href="blog.html">Blog</a>
 									<ul>
 										<li><a href="blog.html">Blog Page</a></li>
 										<li><a href="blog-details.html">Blog Details</a></li>
-									</ul></li>
+
+									</ul>
+								</li>
+
 								<li><a href="contact.html">Contact</a></li>
 							</ul>
 						</nav>
 					</div>
 				</div>
 				<!-- End Mobile Menu -->
+
 				<div class="mobile-menu d-block d-lg-none"></div>
 				<!-- Mobile Menu -->
 			</div>
@@ -329,5 +368,6 @@
 		</div>
 	</div>
 	<!-- End Slider area -->
+
 </body>
 </html>

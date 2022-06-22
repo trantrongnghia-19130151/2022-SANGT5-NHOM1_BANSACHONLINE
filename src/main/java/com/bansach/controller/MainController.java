@@ -6,7 +6,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -20,12 +19,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bansach.entities.Book;
-import com.bansach.entities.ContactEmail;
-import com.bansach.entities.Customer;
 import com.bansach.entities.OrderDetail;
 import com.bansach.entities.ShoppingCart;
 import com.bansach.entities.ShoppingCartItem;
 import com.bansach.service.BookStoreService;
+import com.bansach.service.OrderDetailService;
+
 
 @Controller
 public class MainController {
@@ -34,6 +33,8 @@ public class MainController {
 	private BookStoreService bookService;
 
 
+	@Autowired
+	private OrderDetailService orderDetailService;
 
 	@Autowired
 	private MessageSource messageSource;
@@ -49,28 +50,17 @@ public class MainController {
 		return "shop-grid";
 	}
 
-	@GetMapping(value = "/about")
-	public String about() {
-		return "about";
-	}
-
 	@GetMapping(value = "/cart")
 	public String cart() {
 		return "cart";
 	}
-	
 
-
-	@GetMapping("/addCustomerForm")
-	public String addCustomerForm(Model model) {
-		model.addAttribute("customer", new Customer());
-		return "addCustomer";
-	}
 	@GetMapping("/singleProduct/{id}")
 	public String getSingleProduct(@PathVariable("id") int id, Model model) {
 		model.addAttribute("book", bookService.findBookById(id));
 		return "singleProduct";
 	}
+
 	/*
 	 * Shopping cart
 	 */
@@ -121,14 +111,18 @@ public class MainController {
 		return "cart";
 	}
 
-	@GetMapping("/login")
-	public String loginForm() {
-		return "login";
-	}
 
-	@GetMapping("/admin")
-	public String admin() {
-		return "admin";
+	@GetMapping("/checkout")
+	public String checkout2(HttpSession session, Model model) {
+		ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
+		if (cart == null) {
+			cart = new ShoppingCart();
+			session.setAttribute("cart", cart);
+		}
+		model.addAttribute("numberOfItems", cart.getNumberOfItems());
+		model.addAttribute("total", cart.getTotal());
+		model.addAttribute("books", cart.getItems());
+		return "checkout";
 	}
 
 	@GetMapping("/user")
@@ -141,16 +135,5 @@ public class MainController {
 		return "403";
 	}
 
-	@GetMapping("/contact")
-	public String contact(Model model) {
-		model.addAttribute("contact", new ContactEmail());
-		return "contact";
-	}
-
-	@GetMapping("/myaccount")
-	public String myaccount(Model model) {
-		model.addAttribute("customer", new Customer());
-		return "myaccount";
-	}
 
 }

@@ -1,5 +1,4 @@
 
-
 var book; 
 function displayBook(book) {
     var s = '';
@@ -58,6 +57,24 @@ $(document).ready(function () {
         }).done(function (data) {
             displayBook(data.content);
         });
+    });
+    
+    //update cart items quantity
+    $('.quantity').blur(function() {
+        var newQuantity = $('.quantity').val();
+        var id = this.id;
+    		$.ajax({
+                method : 'GET',
+                url : 'updateCart',
+                dataType : 'json',
+                cache: false,
+    		    data :{ 
+                    id : id,
+                    newQuantity : newQuantity ,
+    		    }
+    		}).done(function (book) {
+    			$('.cart-total').text(book.total);
+           });    
     });
     
 	//auto complete search

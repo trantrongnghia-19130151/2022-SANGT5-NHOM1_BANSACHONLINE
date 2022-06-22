@@ -4577,7 +4577,6 @@ h3.widget-title-modal {
   font-size: 14px;
   margin: 0 0 10px;
   font-weight:500;
-
 }
 .blog-details .comment_respond .comment__form .input__box textarea {
   background: #f7f7f7 none repeat scroll 0 0;
@@ -5755,7 +5754,9 @@ a.checkout__title {
         color: #e59285; }
       .wedget__categories.poroduct--cat ul li a span {
 
+
         color: #333;
+
 
         float: right; }
 .wedget__categories.pro--range {
