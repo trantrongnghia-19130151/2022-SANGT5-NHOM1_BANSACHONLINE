@@ -59,60 +59,8 @@ $(document).ready(function () {
         });
     });
     
-    //update cart items quantity
-    $('.quantity').blur(function() {
-        var newQuantity = $('.quantity').val();
-        var id = this.id;
-    		$.ajax({
-                method : 'GET',
-                url : 'updateCart',
-                dataType : 'json',
-                cache: false,
-    		    data :{ 
-                    id : id,
-                    newQuantity : newQuantity ,
-    		    }
-    		}).done(function (book) {
-    			$('.cart-total').text(book.total);
-           });    
-    });
-    
-	//auto complete search
-	$('#search').keyup(function() {
-		let name = $('#search').val();
-		let len = name.length;
-		
-		$.ajax({
-			method: 'GET',
-			url: 'autoComplete',
-			dataType: 'json',
-			cache: 'no-cache',
-			data: {
-				name: name,
-			}
-		}).done(function(book) {
-			console.log(book)
-			var s = "";
-
-			$('#result').on('click', function() {
-				console.log(name.length)
-				if (len == 0) {
-					s += '';
-					
-				} else {
-					s += '<div class="alert alert-info" >';
-					for (var i = 0; i < book.length; i++) {
-						s += '<a href="singleProduct/' + book[i].id + ' # " class="alert-link">' + book[i].name + '</a></br>'
-					}
-					s += '</div>';
-				}
-				$("#completeSearch").html(s);
-			});
-
-
-		});
-    //filter by price
-    $('#filter').on('click', function () {
+      //filter by price
+     $('#filter').on('click', function () {
         var value = $('#amount').val().trim();
         var res = value.split("-");
         var res1 = res[0].split("$");
@@ -134,8 +82,81 @@ $(document).ready(function () {
             displayBook(book);
         });
     });
+    
+     //quick view
+    $('.quickview').on('click', function () {
+        var value = this.id;
+        console.log(value);
+        $.ajax({
+            method: 'GET',
+            url: 'quickview',
+            dataType: 'json',
+            cache: false,
+            data: {
+                id: value,
+            }
+        }).done(function (book) {
+            console.log(book);
+            var imageUrl='';
+            imageUrl += '<img alt="big images" src="..'+book.image+'">'
+            $('#quickBookName').text(book.name);
+            $('#quickBookImage').html(imageUrl);
+            $('.new-price').text(book.price);
+            $('#productmodal').modal('show');
+        });
+    });
+    
+	//auto complete search
+	$('#search').on('click', function() {
+		let name = $('#value').val();
+		let len = name.length;
+		
+		$.ajax({
+			method: 'GET',
+			url: 'autoComplete',
+			dataType: 'json',
+			cache: 'no-cache',
+			data: {
+				name: name,
+			}
+		}).done(function(book) {
+			console.log(book)
+			var s = "";
 
+			
+				console.log(name.length)
+				if (len == 0) {
+					s += '';
+					
+				} else {
+					s += '<div class="alert alert-info" >';
+					for (var i = 0; i < book.length; i++) {
+						s += '<a href="singleProduct/' + book[i].id + ' " class="alert-link">' + book[i].name + '</a></br>'
+					}
+					s += '</div>';
+				}
+				$("#completeSearch").html(s);
+			
 
+		});
+  
+		    //update cart items quantity
+    $('.quantity').blur(function() {
+        var newQuantity = $('.quantity').val();
+        var id = this.id;
+    		$.ajax({
+                method : 'GET',
+                url : 'updateCart',
+                dataType : 'json',
+                cache: false,
+    		    data :{ 
+                    id : id,
+                    newQuantity : newQuantity ,
+    		    }
+    		}).done(function (book) {
+    			$('.cart-total').text(book.total);
+           });    
+    });
   
 });
 

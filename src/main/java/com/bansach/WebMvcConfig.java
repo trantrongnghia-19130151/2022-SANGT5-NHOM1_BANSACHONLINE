@@ -33,8 +33,20 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		messageSource.setDefaultEncoding("UTF-8");
 		return messageSource;
 	}
-
-
-
+	
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
+		localeChangeInterceptor.setParamName("language");
+		registry.addInterceptor(localeChangeInterceptor).addPathPatterns("/*");
+	}
+	
+	@Override
+	public void addViewControllers(ViewControllerRegistry registry) {
+		registry.addViewController("/403").setViewName("403");
+		registry.addViewController("/").setViewName("index");
+        registry.addViewController("/home").setViewName("userhome");
+        registry.addViewController("/user/home").setViewName("user");
+	}
 
 }

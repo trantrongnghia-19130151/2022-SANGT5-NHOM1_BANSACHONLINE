@@ -125,11 +125,6 @@ public class MainController {
 		return "checkout";
 	}
 
-	@GetMapping("/user")
-	public String user() {
-		return "user";
-	}
-
 	@GetMapping("/403")
 	public String notfoundpage() {
 		return "403";

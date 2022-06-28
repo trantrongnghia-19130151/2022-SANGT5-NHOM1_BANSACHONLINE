@@ -71,6 +71,7 @@ public class ProductService {
 		return bookRepository.existsById(id);
 	}
 
+	@SuppressWarnings("deprecation")
 	public void deleteInBatch(Iterable<Book> entities) {
 		bookRepository.deleteInBatch(entities);
 	}
@@ -83,6 +84,7 @@ public class ProductService {
 		bookRepository.deleteAllInBatch();
 	}
 
+	@SuppressWarnings("deprecation")
 	public Book getOne(Integer id) {
 		return bookRepository.getOne(id);
 	}

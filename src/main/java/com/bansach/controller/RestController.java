@@ -37,16 +37,7 @@ public class RestController {
 	public Page<Book> pagination(int pageNumber){
 		return bookService.pagination(pageNumber);
 	}
-	
-
-	@GetMapping(value= {"/addCart/updateCart","/removeCart/updateCart","/updateCart","/cart/updateCart"})
-	public ShoppingCart updateCart(HttpSession session,int id, int newQuantity) {
-		System.out.println("Id "+id+" newQuantity "+newQuantity);
-		ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
-		cart.update(id, newQuantity);
-		return cart;
-	}
-	
+		
 
 	@GetMapping("/filterPrice")
 	public List<Book> filterPrice(double price1, double price2){
@@ -60,6 +51,19 @@ public class RestController {
 		return bookService.autoComplete(name);
 	}
 	
+	@GetMapping("/quickview")
+	public Book quickView(int id) {
+		System.out.println("Book Id : "+id);
+		return bookService.findBookById(id);
+	}
+	
+	@GetMapping(value= {"/addCart/updateCart","/removeCart/updateCart","/updateCart","/cart/updateCart"})
+	public ShoppingCart updateCart(HttpSession session,int id, int newQuantity) {
+		System.out.println("Id "+id+" newQuantity "+newQuantity);
+		ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
+		cart.update(id, newQuantity);
+		return cart;
+	}
  
 
 }
