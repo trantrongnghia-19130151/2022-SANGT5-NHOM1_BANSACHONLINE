@@ -39,7 +39,7 @@
         						<h3 class="wedget__title" th:text="#{lb.filterbyprice}"></h3>
         						<div class="content-shopby">
         						    <div class="price_filter s-filter clear">
-        						        <form action="filterPrice" method="GET">
+        						        <form action="filter" method="GET">
         						            <div id="slider-range"></div>
         						            <div class="slider__range--output">
         						                <div class="price__output--wrap">
@@ -110,7 +110,7 @@
         				</div>
         				<div class="tab__container">
 	        				<div class="shop-grid tab-pane fade show active" id="nav-grid" role="tabpanel">
-	        					<div class="row" id ="page1">
+	        					<div class="row" id="page1">
 	        						<!-- Start Single Product -->
 		        					<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12" th:each="book : ${listBook}">
 			        					<div class="product__thumb">
