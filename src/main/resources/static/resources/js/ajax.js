@@ -111,6 +111,7 @@ $(document).ready(function () {
 		let name = $('#value').val();
 		let len = name.length;
 		
+		// 6. Chuyền url: autoComplete với data: name
 		$.ajax({
 			method: 'GET',
 			url: 'autoComplete',

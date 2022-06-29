@@ -34,6 +34,7 @@ public class BookStoreService {
 	public List<Book> filterPrice(double price1, double price2){
 		return bookRepository.findByPrice(price1, price2);
 	}
+	// 8. Gọi phương thức autoComplete(name) đến BookRepository
 	public List<Book> autoComplete(String name){
 		return bookRepository.autoComplete(name);
 	}

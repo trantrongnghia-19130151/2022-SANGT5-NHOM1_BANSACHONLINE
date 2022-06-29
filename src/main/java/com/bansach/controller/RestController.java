@@ -45,6 +45,7 @@ public class RestController {
 	}
 	
 
+	// 7. Gọi phương thức autoComplete(name) đến BookStoreService
 	@GetMapping("/autoComplete")
 	public List<Book> autoComplete( String name){
 		System.out.println("Name : "+name);
